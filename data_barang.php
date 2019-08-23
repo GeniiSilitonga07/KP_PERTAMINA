@@ -39,10 +39,10 @@
 		</form>
 	</div>
 
-	<div class="card-body text-center">
+	<div class="card-body text-right">
 		<?php if(!empty($_POST['filter_jenis'])||!empty($_POST['filter_status'])){ ?>
 			<?php $jb = $_POST['filter_jenis']; $sb = $_POST['filter_status'];?>
-			<form action="export_databarang.php?jnsbarang=<?php echo $jb ?>&stsbarang=<?php echo $sb ?>" method="GET">
+			<form action="export_databarang.php?jnsbarang=<?php echo $jb ?>&stsbarang=<?php echo $sb ?>" method="POST">
 				<button class="btn btn-sm btn-success" type="submit">Print To Excel</button>
 			</form>	
 		<?php } else { ?>

@@ -3,46 +3,52 @@
 	header("Content-Type: application/force-download");
  	header("Cache-Control: no-cache, must-revalidate");
  	header("Expires: Sat, 31 Des 2010 00:00:00 GMT"); 
- 	header("content-disposition: attachment;filename=laporandatabarang.xls");
+ 	header("content-disposition: attachment;filename=laporantransaksibarang.xls");
  	$no=0;
 ?>
 
-<div class="card-body text-center">
+	<div class="card-body text-center">
 		<table class="table table-bordered">
 			<thead class="table-primary font-weight-bold">
 				<tr>
-					<th>No</th>
+					<th>ID Transaksi</th>
 					<th>ID Barang</th>
-					<th>Jenis Barang</th>
 					<th>Nama Barang</th>
-					<th>Stok Barang</th>
+					<th>Jenis Barang</th>
+					<th>Tanggal Transaksi</th>
+					<th>Jumlah</th>
 					<th>Satuan</th>
+					<th>Keterangan</th>
 					<th>Status</th>
 				</tr>
 			</thead>
-			<?php if (!empty($jns)||!empty($st)){
-				$sql = mysqli_query($koneksi, "SELECT * FROM databarang WHERE JenisBarang = '$jns' AND Status = '$st'");?>
-				<?php while ($detail = mysqli_fetch_assoc($sql)) {?>
+			<?php if (!empty($tg)){
+				$sql_tgl = mysqli_query($koneksi, "SELECT * FROM transaksibarang WHERE TanggalTransaksi = '$tg'");
+				while ($detail = mysqli_fetch_assoc($sql_tgl)) {?>
 					<tr class="cross">
-						<td class="t-data"><center><?php echo(++$no)?></center></td>
+						<td class="t-data"><center><?php echo('#TRBG'. $detail['IDTransaksi'] )?></center></td>
 						<td class="t-data"><center><?php echo($detail['IDBarang']) ?></center></td>
 						<td class="t-data"><center><?php echo($detail['NamaBarang']) ?></center></td>
 						<td class="t-data"><center><?php echo($detail['JenisBarang']) ?></center></td>
-						<td class="t-data"><center><?php echo($detail['StokBarang']) ?></center></td>
+						<td class="t-data"><center><?php echo($detail['TanggalTransaksi']) ?></center></td>
+						<td class="t-data"><center><?php echo($detail['JumlahTransaksi']) ?></center></td>
 						<td class="t-data"><center><?php echo($detail['SatuanStok']) ?></center></td>
+						<td class="t-data"><center><?php echo($detail['Keterangan']) ?></center></td>
 						<td class="t-data"><center><?php echo($detail['Status']) ?></center></td>
 					</tr>
 				<?php }
-			}else{ ?>
-				<?php $query = mysqli_query($koneksi, "SELECT * FROM databarang");?>
-				<?php while ($detail = mysqli_fetch_assoc($query)) {?>
+			}else{
+				$query = mysqli_query($koneksi, "SELECT * FROM transaksibarang");
+				while ($detail = mysqli_fetch_assoc($query)) {?>
 					<tr class="cross">
-						<td class="t-data"><center><?php echo(++$no)?></center></td>
+						<td class="t-data"><center><?php echo('#TRBG'. $detail['IDTransaksi'] )?></center></td>
 						<td class="t-data"><center><?php echo($detail['IDBarang']) ?></center></td>
 						<td class="t-data"><center><?php echo($detail['NamaBarang']) ?></center></td>
 						<td class="t-data"><center><?php echo($detail['JenisBarang']) ?></center></td>
-						<td class="t-data"><center><?php echo($detail['StokBarang']) ?></center></td>
+						<td class="t-data"><center><?php echo($detail['TanggalTransaksi']) ?></center></td>
+						<td class="t-data"><center><?php echo($detail['JumlahTransaksi']) ?></center></td>
 						<td class="t-data"><center><?php echo($detail['SatuanStok']) ?></center></td>
+						<td class="t-data"><center><?php echo($detail['Keterangan']) ?></center></td>
 						<td class="t-data"><center><?php echo($detail['Status']) ?></center></td>
 					</tr>
 				<?php }

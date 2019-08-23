@@ -17,6 +17,19 @@
 		</form>
 	</div>
 	
+	<div class="card-body text-right">
+		<?php if(!empty($_POST['tanggal'])){ ?>
+			<?php $tt = $_POST['tanggal'];?>
+			<form action="export_transaksibarang.php?tgltransaksi=<?php echo $tt ?>" method="POST">
+				<button class="btn btn-sm btn-success" type="submit">Print To Excel</button>
+			</form>	
+		<?php } else { ?>
+			<form action="export_transaksibarang.php">
+				<button class="btn btn-sm btn-success" type="submit">Print To Excel</button>
+			</form>	
+		<?php } ?>
+	</div>
+
 	<div class="card-body text-center">
 		<table class="table table-bordered">
 			<thead class="table-primary font-weight-bold">
