@@ -3,9 +3,8 @@
 	include_once ('config/database.php');
 	include_once ('assets/header.php');
 	$no=0;
+	$role= $_SESSION['role'];
 ?>
-
-	
 	<h1 style="padding-top: 40px; padding-bottom: 10px;"><center>Sistem Informasi Gudang IT PT. PERTAMINA RU IV</center></h1> 
 
 	<h3 style="padding-top: 10px; padding-bottom: 10px;"><center>Daftar Barang di Gudang IT</center></h3>
@@ -16,19 +15,14 @@
 			<button class="btn btn-primary" type="submit" name="Cari">Cari
 		</form>
 	</div>
-	
+
+	<?php if($role==1){ ?>
 	<div class="card-body text-right">
-		<?php if(!empty($_POST['tanggal'])){ ?>
-			<?php $tt = $_POST['tanggal'];?>
-			<form action="export_transaksibarang.php?tgltransaksi=<?php echo $tt ?>" method="POST">
-				<button class="btn btn-sm btn-success" type="submit">Print To Excel</button>
-			</form>	
-		<?php } else { ?>
-			<form action="export_transaksibarang.php">
-				<button class="btn btn-sm btn-success" type="submit">Print To Excel</button>
-			</form>	
-		<?php } ?>
+		<form action="export_transaksibarang.php">
+			<button class="btn btn-sm btn-success" type="submit">Print To Excel</button>
+		</form>	
 	</div>
+	<?php }?>
 
 	<div class="card-body text-center">
 		<table class="table table-bordered">
@@ -46,7 +40,7 @@
 
 				</tr>
 			</thead>
-			<?php if (isset($_POST['tanggal'])){
+			<?php if (isset($_POST['tanggal'])&&isset($_POST['Cari'])){
 				$tgl = $_POST['tanggal'];
 				$sql_tgl = mysqli_query($koneksi, "SELECT * FROM transaksibarang WHERE TanggalTransaksi = '$tgl'");
 				while ($detail = mysqli_fetch_assoc($sql_tgl)) {?>

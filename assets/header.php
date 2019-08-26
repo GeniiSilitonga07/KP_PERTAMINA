@@ -25,7 +25,10 @@
                     <a class="nav-link" href="data_barang.php">Data Barang</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="rev_transaksi.php">Review Transaksi</a>
+                    <a class="nav-link" href="transaksi.php">Transaksi</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="rev_transaksi.php">View Transaksi</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="process_logout.php">Logout</a>
@@ -38,7 +41,7 @@
                     <a class="nav-link" href="transaksi.php">Transaksi</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="rev_transaksi.php">Review Transaksi</a>
+                    <a class="nav-link" href="rev_transaksi.php">View Transaksi</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="process_logout.php">Logout</a>
